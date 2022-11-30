@@ -38,12 +38,12 @@ namespace MOrders.DAL.Repository
 
         public async Task<OrderItem> Get(int id)
         {
-            return await _context.OrderItem.FindAsync(id);
+            return await _context.OrderItem.Include(o => o.Order).ThenInclude(p => p.Provider).Where(o => o.Id == id).AsNoTracking().FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<OrderItem>> GetAll()
         {
-            return await _context.OrderItem.ToListAsync();
+            return await _context.OrderItem.Include(o => o.Order).ThenInclude(p => p.Provider).AsNoTracking().ToListAsync();
         }
 
         public async Task<bool> Update(int id, OrderItem item)

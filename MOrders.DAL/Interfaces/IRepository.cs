@@ -1,4 +1,6 @@
-﻿namespace MOrders.DAL.Interfaces
+﻿using MOrders.DAL.Entities;
+
+namespace MOrders.DAL.Interfaces
 {
     public interface IRepository<T> where T : class
     {
