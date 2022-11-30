@@ -2,6 +2,6 @@
 {
     internal interface IDistinctRepository<T> where T : class
     {
-        public Task<T> GetDistinct()
+        public Task<T> GetDistinct();
     }
 }
