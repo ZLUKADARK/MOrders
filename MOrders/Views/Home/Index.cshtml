@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @foreach ( var item in ViewBag.Provider)
+    {
+        <h1 class="display-4">@item</h1>
+    }
+    
+   
+</div>
