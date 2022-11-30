@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MOrders.DAL\MOrders.DAL.csproj" />
+    <ProjectReference Include="..\MOrders.BLL\MOrders.BLL.csproj" />
   </ItemGroup>
 
 </Project>

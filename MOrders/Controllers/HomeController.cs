@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MOrders.DAL.Entities;
-using MOrders.DAL.Interfaces;
+using MOrders.BLL.Interfaces;
 using MOrders.Models;
 using System.Diagnostics;
 using System.Linq;
@@ -10,18 +9,16 @@ namespace MOrders.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IRepository<Provider> _providerRepository;
-
-        public HomeController(ILogger<HomeController> logger, IRepository<Provider> repository)
+        private readonly IOrderServices _orderServices;
+        public HomeController(ILogger<HomeController> logger, IOrderServices orderServices)
         {
             _logger = logger;
-            _providerRepository = repository;
+            _orderServices = orderServices;
         }
 
         public async Task<IActionResult> Index()
         {
-            var providers = await _providerRepository.GetAll();
-            ViewBag.Provider = providers.Select(o => o.Name);
+            ViewBag.Provider = await _orderServices.GetProviders();
             return View();
         }
 
