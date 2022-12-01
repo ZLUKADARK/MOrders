@@ -1,8 +1,6 @@
-﻿using MOrders.DAL.Interfaces.IModels;
-
-namespace MOrders.DAL.Models
+﻿namespace MOrders.DAL.Interfaces.IModels
 {
-    public class OrderFilter : IOrderFilter
+    public interface IOrderFilter
     {
         public DateTime DateNow { get; set; }
         public DateTime DatePast { get; set; }

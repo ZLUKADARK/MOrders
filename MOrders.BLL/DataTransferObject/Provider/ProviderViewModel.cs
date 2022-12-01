@@ -1,6 +1,6 @@
-﻿namespace MOrders.BLL.DataTransferObject
+﻿namespace Orders.ViewModels.Provider
 {
-    public class ProvidersDTO
+    public class ProviderViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
