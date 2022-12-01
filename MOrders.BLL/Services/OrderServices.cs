@@ -113,8 +113,8 @@ namespace MOrders.BLL.Services
 
         public async Task<bool> UpdateOrderItem(int id, OrderItemUpdateViewModel orderItem)
         {
-            var result = new OrderItem { Id = orderItem.Id, Name = orderItem.Name, Quantity = orderItem.Quantity, Unit = orderItem.Unit }
-            return await _orderItemRepository.Update(id, result);
+            var result = new OrderItem { Id = orderItem.Id, Name = orderItem.Name, Quantity = orderItem.Quantity, Unit = orderItem.Unit };
+            return await _orderItemRepository.Update(id, result); ;
         }
 
         public async Task<bool> DeleteOrderItem(int id)
