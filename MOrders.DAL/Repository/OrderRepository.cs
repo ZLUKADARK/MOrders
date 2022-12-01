@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MOrders.DAL.Data;
-using MOrders.DAL.Entities;
 using MOrders.DAL.Interfaces;
+using MOrders.Domain.Entities;
 
 namespace MOrders.DAL.Repository
 {

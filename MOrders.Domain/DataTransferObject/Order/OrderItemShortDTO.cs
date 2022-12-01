@@ -1,6 +1,6 @@
-﻿namespace MOrders.BLL.DataTransferObject.Order
+﻿namespace MOrders.Domain.DataTransferObject.Order
 {
-    public class OrderItemShorViewModel
+    public class OrderItemShortDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

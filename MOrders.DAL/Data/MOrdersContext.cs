@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MOrders.DAL.Entities;
+using MOrders.Domain.Entities;
 
 namespace MOrders.DAL.Data
 {

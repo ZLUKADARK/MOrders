@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MOrders.DAL\MOrders.DAL.csproj" />
-    <ProjectReference Include="..\MOrders.Domain\MOrders.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

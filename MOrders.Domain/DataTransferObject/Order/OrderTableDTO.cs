@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace MOrders.BLL.DataTransferObject.Order
+namespace MOrders.Domain.DataTransferObject.Order
 {
-    public class OrderTableViewModel
+    public class OrderTableDTO
     {
         public int OrderItemId { get; set; }
         public int OrderId { get; set; }

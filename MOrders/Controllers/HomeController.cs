@@ -18,7 +18,7 @@ namespace MOrders.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.Provider = await _orderServices.GetProviders();
+            ViewBag.Provider = (await _orderServices.GetDistinct()).ProviderName;
             return View();
         }
 

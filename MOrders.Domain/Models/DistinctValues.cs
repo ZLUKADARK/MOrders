@@ -1,9 +1,6 @@
-﻿using MOrders.DAL.Interfaces.IModels;
-using MOrders.DAL.Models;
-
-namespace MOrders.BLL.DataTransferObject.Order
+﻿namespace MOrders.Domain.Models
 {
-    public class DistinctValuesForSelect : DistinctValues
+    public class DistinctValues 
     {
         public List<string>? Number { get; set; }
         public List<string>? ItemName { get; set; }

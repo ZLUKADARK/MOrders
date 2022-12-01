@@ -2,10 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using MOrders.BLL.Interfaces;
 using MOrders.BLL.Services;
 using MOrders.DAL.Data;
-using MOrders.DAL.Entities;
 using MOrders.DAL.Interfaces;
-using MOrders.DAL.Models;
 using MOrders.DAL.Repository;
+using MOrders.Domain.Entities;
+using MOrders.Domain.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

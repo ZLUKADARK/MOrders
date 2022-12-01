@@ -1,6 +1,6 @@
-﻿namespace Orders.ViewModels.Provider
+﻿namespace MOrders.Domain.DataTransferObject.Provider
 {
-    public class ProviderViewModel
+    public class ProviderDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

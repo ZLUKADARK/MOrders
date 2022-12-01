@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MOrders.BLL.DataTransferObject.OrderItem
+﻿namespace MOrders.Domain.DataTransferObject.OrderItem
 {
-    public class OrderItemViewModel
+    public class OrderItemDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

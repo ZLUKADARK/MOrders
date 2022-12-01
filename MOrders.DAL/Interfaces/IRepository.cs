@@ -1,6 +1,4 @@
-﻿using MOrders.DAL.Entities;
-
-namespace MOrders.DAL.Interfaces
+﻿namespace MOrders.DAL.Interfaces
 {
     public interface IRepository<T, F> where T : class where F : class
     {
