@@ -1,0 +1,41 @@
+﻿@using MOrders.Domain.DataTransferObject.Order;
+@model OrderDetailWithItemsDTO
+@{
+    ViewData["Title"] = "DetailsOrder";
+}
+<br />
+<div class="card border-dark mb-6">
+    <div class="card-header">
+        <div class="span4">
+            Номер: @Model.Number
+        </div>
+    </div>
+    <div class="card-body text-dark">
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th scope="row">Поставщик</th>
+                    <td>@Model.ProviderName</td>
+                </tr>
+                <tr>
+                    <th scope="row">Дата</th>
+                    <td>@Model.Date</td>
+                </tr>
+                @foreach (var item in Model.OrderItem)
+                {
+                    <tr>
+                        <th scope="row">@item.Name</th>
+                        <td>@item.Quantity / @item.Unit</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <button onclick="location.href='@Url.Action("Index", "Orders")'" class="btn-outline-dark">Вернутся</button>
+        <button onclick="location.href='@Url.Action("EditOrders", "Orders", new { id = Model.Id })'" class="btn-outline-warning">Редактировать</button>
+        <button onclick="location.href='@Url.Action("DeleteOrder", "Orders", new { id = Model.Id })'" class="btn-outline-danger">Удалить</button>
+    </div>
+</div>
+

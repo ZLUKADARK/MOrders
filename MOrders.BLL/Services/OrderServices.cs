@@ -5,6 +5,7 @@ using MOrders.BLL.Interfaces;
 using MOrders.DAL.Interfaces;
 using MOrders.Domain.Entities;
 using MOrders.Domain.Models;
+using MOrders.DAL.Migrations;
 
 namespace MOrders.BLL.Services
 {
@@ -26,15 +27,19 @@ namespace MOrders.BLL.Services
         }
         public async Task<OrderDTO> CreateOrder(OrderDTO orders)
         {
-            var result = new Order() { Date = orders.Date, Number = orders.Number, ProviderId = orders.ProviderId };  
-            orders.Id = (await _orderRepository.Create(result)).Id;
+            var result = new Order() { Date = orders.Date, Number = orders.Number, ProviderId = orders.ProviderId };
+            var response = await _orderRepository.Create(result);
+            if (response != null)
+                orders.Id = response.Id;
             return orders;
         }
 
         public async Task<OrderItemDTO> CreateOrderItemToOrder(OrderItemDTO orderItem)
         {
             var result = new OrderItem() { Name = orderItem.Name, Quantity = orderItem.Quantity, OrderId = orderItem.OrderId, Unit = orderItem.Unit };
-            orderItem.Id = (await _orderItemRepository.Create(result)).Id;
+            var response = await _orderItemRepository.Create(result);
+            if (response != null)
+                orderItem.Id = response.Id;
             return orderItem;
         }
 

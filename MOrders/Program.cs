@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using MOrders.BLL.Interfaces;
 using MOrders.BLL.Services;
@@ -20,6 +21,8 @@ builder.Services.AddTransient<IRepository<Provider>, ProviderRepository>();
 builder.Services.AddTransient<IRepository<OrderItem, OrderFilter>, OrderItemRepository>();
 builder.Services.AddTransient<IRepository<Order>, OrderRepository>();
 builder.Services.AddTransient<IDistinctRepository<DistinctValues>, DistinctValuesRepositoriy> ();
+builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 
@@ -40,6 +43,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Orders}/{action=Index}/{id?}");
 
 app.Run();

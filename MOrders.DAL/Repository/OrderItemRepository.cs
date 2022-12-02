@@ -15,6 +15,9 @@ namespace MOrders.DAL.Repository
         }
         public async Task<OrderItem> Create(OrderItem item)
         {
+            if (OrdernNameExists(item.Name))
+                return null;
+
             _context.OrderItem.Add(item);
             try
             {
@@ -44,13 +47,20 @@ namespace MOrders.DAL.Repository
 
         public async Task<IEnumerable<OrderItem>> GetByFilter(OrderFilter filter)
         {
-            return await _context.OrderItem.Include(o => o.Order).ThenInclude(p => p.Provider).AsNoTracking()
+            var resuslt = _context.OrderItem.Include(o => o.Order).ThenInclude(p => p.Provider).AsNoTracking()
                          .Where(f =>
                          (filter.Name == null ? true : filter.Name.Length == 0 ? true : filter.Name[0] == null ? true : filter.Name.Contains(f.Name))
                          & (filter.Number == null ? true : filter.Number.Length == 0 ? true : filter.Number[0] == null ? true : filter.Number.Contains(f.Order.Number))
                          & (filter.ProviderName == null ? true : filter.ProviderName.Length == 0 ? true : filter.ProviderName[0] == null ? true : filter.ProviderName.Contains(f.Order.Provider.Name))
                          & (filter.Unit == null ? true : filter.Unit.Length == 0 ? true : filter.Unit[0] == null ? true : filter.Unit.Contains(f.Unit))
-                         & (filter.DateNow == DateTime.MinValue & filter.DatePast == DateTime.MinValue ? true : f.Order.Date <= filter.DateNow & f.Order.Date >= filter.DatePast)).ToListAsync();
+                         & (filter.DateNow == DateTime.MinValue & filter.DatePast == DateTime.MinValue ? true : f.Order.Date <= filter.DateNow & f.Order.Date >= filter.DatePast));
+            
+            return await resuslt.Where(
+                x => filter.Search == null ? true :
+                x.Order.Number.Contains(filter.Search)
+                | x.Order.Provider.Name.Contains(filter.Search)
+                | x.Unit.Contains(filter.Search)
+                | x.Name.Contains(filter.Search)).ToListAsync();
         }
 
         public async Task<IEnumerable<OrderItem>> GetAll()
@@ -66,7 +76,11 @@ namespace MOrders.DAL.Repository
             if (OrdernNameExists(item.Name))
                 return false;
 
-            _context.Entry(item).State = EntityState.Modified;
+            var newOrderItem = await _context.OrderItem.FindAsync(item.Id);
+            newOrderItem.Name = item.Name;
+            newOrderItem.Quantity = item.Quantity;
+            newOrderItem.Unit = item.Unit;
+            _context.Entry(newOrderItem).State = EntityState.Modified;
             try
             {
                 await _context.SaveChangesAsync();

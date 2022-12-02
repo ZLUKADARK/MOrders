@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<h1>Заказы </h1>
+<form id="filters" class="border-dark">
+    <div class="row">
+        <div class="col-3">
+            <label class="control-label">Поиск</label>
+            <input class="form-control" id="search" type="text" name="Search">
+        </div>
+    </div>
+    <br />
+    <div class="row" id="dateBlock">
+        <div class="col-3">
+            <label class="control-label">От</label>
+            <input class="form-control" id="datePast" type="datetime-local" name="DatePast" value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-ddTHH:mm")">
+        </div>
+        <div class="col-3">
+            <label class="control-label">До</label>
+            <input class="form-control" id="dateNow" type="datetime-local" name="DateNow" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")">
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="row">
+            <div class="col-3">
+                <label class="control-label">Номер заказа</label>
+                <select multiple name="Number" asp-items="ViewBag.SelectNumber" class="selectpicker"></select>
+            </div>
+            <div class="col-3">
+                <label class="control-label">Поставщик</label>
+                <select multiple name="ProviderName" asp-items="ViewBag.SelectProviderName" class="selectpicker"></select>
+            </div>
+            <div class="col-3">
+                <label class="control-label">Название продукта</label>
+                <select multiple name="Name" asp-items="ViewBag.SelectProductsName" class="selectpicker"></select>
+            </div>
+            <div class="col-3">
+                <label class="control-label">Единица измерения</label>
+                <select multiple name="Unit" asp-items="ViewBag.SelectProductunit" class="selectpicker"></select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="row">
+            <div class="col-1">
+                <input type="submit" id="btnsubmit" value="Применить" class="btn btn-outline-success" />
+            </div>
+            <br />
+            <div class="col-1 ">
+                <input type="button" value="Отменить" onclick="location.href='@Url.Action("Index", "Orders")'" class="btn btn-outline-dark" />
+            </div>
+            <div class="col-2 row">
+                <input type="button" class="btn btn-outline-primary" onclick="hiddeDateFilters()" value="Фильтр по дате" id="btn-check-dates">
+            </div>
+            <br />
+        </div>
+    </div>
+</form>
+<br />
+@Html.Action("GetOrders")
+    <script>
+        $(document).ready(function () {
+            $("#btnsubmit").click(function (e) {
+                var valdata = $("#filters").serialize();
+                $.ajax({
+                    url: "/Orders/OrdersFilter",
+                    type: "POST",
+                    dataType: 'json',
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: valdata
+                });
+            });
+        });
+    </script>
+    <script>
+        function hiddeDateFilters() {
+            if (document.getElementById("dateBlock").hidden != true) {
+                document.getElementById("dateBlock").hidden = true
+                document.getElementById("datePast").disabled = true
+                document.getElementById("dateNow").disabled = true
+            } else {
+                document.getElementById("dateBlock").hidden = false
+                document.getElementById("dateBlock").hidden = false
+                document.getElementById("datePast").disabled = false
+                document.getElementById("dateNow").disabled = false
+            }
+        }
+    </script>

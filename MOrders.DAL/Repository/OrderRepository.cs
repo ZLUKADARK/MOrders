@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MOrders.DAL.Data;
 using MOrders.DAL.Interfaces;
+using MOrders.DAL.Migrations;
 using MOrders.Domain.Entities;
 
 namespace MOrders.DAL.Repository
@@ -14,6 +15,9 @@ namespace MOrders.DAL.Repository
         }  
         public async Task<Order> Create(Order item)
         {
+            if (OrderItemsNumberExists(item.Number))
+                return null;
+            
             _context.Order.Add(item);
             try
             {
@@ -53,8 +57,11 @@ namespace MOrders.DAL.Repository
 
             if (OrderItemsNumberExists(item.Number))
                 return false;
-
-            _context.Entry(item).State = EntityState.Modified;
+            var newOrder = await _context.Order.FindAsync(item.Id);
+            newOrder.Number = item.Number;
+            newOrder.Date = item.Date;
+            newOrder.ProviderId = item.ProviderId;
+            _context.Entry(newOrder).State = EntityState.Modified;
             try
             {
                 await _context.SaveChangesAsync();
