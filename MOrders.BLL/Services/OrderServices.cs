@@ -29,8 +29,9 @@ namespace MOrders.BLL.Services
         {
             var result = new Order() { Date = orders.Date, Number = orders.Number, ProviderId = orders.ProviderId };
             var response = await _orderRepository.Create(result);
-            if (response != null)
-                orders.Id = response.Id;
+            if (response == null)
+                return null;
+            orders.Id = response.Id;
             return orders;
         }
 
@@ -38,8 +39,9 @@ namespace MOrders.BLL.Services
         {
             var result = new OrderItem() { Name = orderItem.Name, Quantity = orderItem.Quantity, OrderId = orderItem.OrderId, Unit = orderItem.Unit };
             var response = await _orderItemRepository.Create(result);
-            if (response != null)
-                orderItem.Id = response.Id;
+            if (response == null)
+                return null;
+            orderItem.Id = response.Id;
             return orderItem;
         }
 
