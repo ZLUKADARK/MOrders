@@ -6,7 +6,7 @@ using MOrders.Domain.Models;
 
 namespace MOrders.DAL.Repository
 {
-    public class OrderItemRepository : IRepository<OrderItem, OrderFilter>
+    public class OrderItemRepository : IOrderItemRepository
     {
         private readonly MOrdersContext _context;
         public OrderItemRepository(MOrdersContext context)

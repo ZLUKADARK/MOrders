@@ -18,7 +18,7 @@ builder.Services.AddDbContext<MOrdersContext>(option => option.UseSqlServer(conn
 
 builder.Services.AddTransient<IOrderServices, OrderServices>();
 builder.Services.AddTransient<IRepository<Provider>, ProviderRepository>();
-builder.Services.AddTransient<IRepository<OrderItem, OrderFilter>, OrderItemRepository>();
+builder.Services.AddTransient<IOrderItemRepository, OrderItemRepository>();
 builder.Services.AddTransient<IRepository<Order>, OrderRepository>();
 builder.Services.AddTransient<IDistinctRepository<DistinctValues>, DistinctValuesRepositoriy> ();
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();

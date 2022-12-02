@@ -5,7 +5,6 @@ using MOrders.BLL.Interfaces;
 using MOrders.DAL.Interfaces;
 using MOrders.Domain.Entities;
 using MOrders.Domain.Models;
-using MOrders.DAL.Migrations;
 
 namespace MOrders.BLL.Services
 {
@@ -13,11 +12,11 @@ namespace MOrders.BLL.Services
     {
         private readonly IRepository<Provider> _providerRepository;
         private readonly IRepository<Order> _orderRepository;
-        private readonly IRepository<OrderItem, OrderFilter> _orderItemRepository;
+        private readonly IOrderItemRepository _orderItemRepository;
         private readonly IDistinctRepository<DistinctValues> _distinctRepository;
         public OrderServices(IRepository<Provider> providerRepository, 
-            IRepository<Order> orderRepository, 
-            IRepository<OrderItem, OrderFilter> orderItemRepository, 
+            IRepository<Order> orderRepository,
+            IOrderItemRepository orderItemRepository, 
             IDistinctRepository<DistinctValues> distinctRepository)
         {
             _providerRepository = providerRepository;
