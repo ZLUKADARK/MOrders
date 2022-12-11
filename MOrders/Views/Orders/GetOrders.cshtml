@@ -1,6 +1,6 @@
 ﻿@using MOrders.Domain.DataTransferObject.Order;
 @model IEnumerable<OrderTableDTO>
-<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 <table class="table">
     <thead>
         <tr>
@@ -39,7 +39,7 @@
                     @Html.DisplayFor(modelItem => item.ProviderName)
                 </td>
                 <td>
-                    <a asp-action="DetailsOrderItem" asp-route-id="@item.OrderItemId">@Html.DisplayFor(modelItem => item.Name)</a>
+                    <a asp-action="DetailsOrderItem" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
@@ -48,7 +48,7 @@
                     @Html.DisplayFor(modelItem => item.Unit)
                 </td>
                 <td>
-                    <button onclick="location.href='@Url.Action("DeleteOrderItem", "Orders", new { id = item.OrderItemId })'" type="button" class="btn btn-outline-danger btn-sm" ->Удалить</button>
+                    <button onclick="location.href='@Url.Action("DeleteOrderItem", "Orders", new { id = item.Id })'" type="button" class="btn btn-outline-danger btn-sm" ->Удалить</button>
                 </td>
             </tr>
         }

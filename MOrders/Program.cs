@@ -17,6 +17,8 @@ string connection = builder.Configuration.GetConnectionString("MOrdersDBContext"
 builder.Services.AddDbContext<MOrdersContext>(option => option.UseSqlServer(connection));
 
 builder.Services.AddTransient<IOrderServices, OrderServices>();
+builder.Services.AddTransient<IOrderItemServices, OrderItemServices>();
+builder.Services.AddTransient<IProviderServices, ProviderServices>();
 builder.Services.AddTransient<IRepository<Provider>, ProviderRepository>();
 builder.Services.AddTransient<IOrderItemRepository, OrderItemRepository>();
 builder.Services.AddTransient<IRepository<Order>, OrderRepository>();

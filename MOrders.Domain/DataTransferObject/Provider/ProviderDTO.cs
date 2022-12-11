@@ -1,8 +1,6 @@
-﻿namespace MOrders.Domain.DataTransferObject.Provider
+﻿using MOrders.Domain.DataTransferObject.Abstract;
+
+namespace MOrders.Domain.DataTransferObject.Provider
 {
-    public class ProviderDTO
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+    public class ProviderDTO : ProviderBase { }
 }
