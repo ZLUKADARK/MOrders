@@ -48,10 +48,6 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
-
-	<Target Name="PrePublishTarget" AfterTargets="Publish">
-		<Exec Command="dotnet ef database update" />
-	</Target>
 	
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
