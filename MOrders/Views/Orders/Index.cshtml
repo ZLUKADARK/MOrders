@@ -16,7 +16,7 @@
                 <div class="col-md-3">
                     <label class="control-label">От</label>
                     <input class="form-control" id="datePast" type="datetime-local" name="DatePast" value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-ddTHH:mm")">
-                </div>
+                </div><br />
                 <div class="col-md-3">
                     <label class="control-label">До</label>
                     <input class="form-control" id="dateNow" type="datetime-local" name="DateNow" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")">
@@ -24,22 +24,22 @@
             </div>
             <br />
             <div class="row exp">
-                    <div class="col-md-3 col-ex d-flex flex-column">
-                        <label class="control-label">Номер заказа</label>
-                        <select multiple name="Number" asp-items="ViewBag.SelectNumber" class="selectpicker form-control"></select>
-                    </div>
-                    <div class="col-md-3 col-ex d-flex flex-column"> заказа	Количеств
-                        <label class="control-label">Поставщик</label>
-                        <select multiple name="ProviderName" asp-items="ViewBag.SelectProviderName" class="selectpicker form-control"></select>
-                    </div >
-                    <div class="col-md-3 col-ex d-flex flex-column">
-                        <label class="control-label">Название продукта</label>
-                        <select multiple name="Name" asp-items="ViewBag.SelectProductsName" class="selectpicker form-control"></select>
-                    </div>
                 <div class="col-md-3 col-ex d-flex flex-column">
-                        <label class="control-label">Единица измерения</label>
-                        <select multiple name="Unit" asp-items="ViewBag.SelectProductunit" class="selectpicker form-control"></select>
-                    </div>
+                    <label class="control-label">Номер заказа</label>
+                    <select multiple name="Number" asp-items="ViewBag.SelectNumber" class="selectpicker form-control"></select>
+                </div> <br />
+                <div class="col-md-3 col-ex d-flex flex-column">
+                    <label class="control-label">Поставщик</label>
+                    <select multiple name="ProviderName" asp-items="ViewBag.SelectProviderName" class="selectpicker form-control"></select>
+                </div ><br />
+                <div class="col-md-3 col-ex d-flex flex-column">
+                    <label class="control-label">Название продукта</label>
+                    <select multiple name="Name" asp-items="ViewBag.SelectProductsName" class="selectpicker form-control"></select>
+                </div><br />
+                <div class="col-md-3 col-ex d-flex flex-column">
+                    <label class="control-label">Единица измерения</label>
+                    <select multiple name="Unit" asp-items="ViewBag.SelectProductunit" class="selectpicker form-control"></select>
+                </div>
             </div>
             <br />
             <div class="form-group">
