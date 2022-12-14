@@ -7,6 +7,7 @@ using MOrders.DAL.Interfaces;
 using MOrders.DAL.Repository;
 using MOrders.Domain.Entities;
 using MOrders.Domain.Models;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
