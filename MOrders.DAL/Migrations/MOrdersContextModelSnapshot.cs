@@ -3,8 +3,8 @@ using System;
 using MOrders.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -18,27 +18,27 @@ namespace MOrders.DAL.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MOrders.DAL.Entities.Order", b =>
+            modelBuilder.Entity("MOrders.Domain.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2(7)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Number")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<int>("ProviderId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -50,27 +50,27 @@ namespace MOrders.DAL.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("MOrders.DAL.Entities.OrderItem", b =>
+            modelBuilder.Entity("MOrders.Domain.Entities.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("OrderId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,3)");
 
                     b.Property<string>("Unit")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -79,17 +79,17 @@ namespace MOrders.DAL.Migrations
                     b.ToTable("OrderItem");
                 });
 
-            modelBuilder.Entity("MOrders.DAL.Entities.Provider", b =>
+            modelBuilder.Entity("MOrders.Domain.Entities.Provider", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -128,9 +128,9 @@ namespace MOrders.DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MOrders.DAL.Entities.Order", b =>
+            modelBuilder.Entity("MOrders.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("MOrders.DAL.Entities.Provider", "Provider")
+                    b.HasOne("MOrders.Domain.Entities.Provider", "Provider")
                         .WithMany("Orders")
                         .HasForeignKey("ProviderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -139,9 +139,9 @@ namespace MOrders.DAL.Migrations
                     b.Navigation("Provider");
                 });
 
-            modelBuilder.Entity("MOrders.DAL.Entities.OrderItem", b =>
+            modelBuilder.Entity("MOrders.Domain.Entities.OrderItem", b =>
                 {
-                    b.HasOne("MOrders.DAL.Entities.Order", "Order")
+                    b.HasOne("MOrders.Domain.Entities.Order", "Order")
                         .WithMany("OrderItem")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -150,12 +150,12 @@ namespace MOrders.DAL.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("MOrders.DAL.Entities.Order", b =>
+            modelBuilder.Entity("MOrders.Domain.Entities.Order", b =>
                 {
                     b.Navigation("OrderItem");
                 });
 
-            modelBuilder.Entity("MOrders.DAL.Entities.Provider", b =>
+            modelBuilder.Entity("MOrders.Domain.Entities.Provider", b =>
                 {
                     b.Navigation("Orders");
                 });

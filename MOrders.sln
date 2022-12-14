@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MOrders.DAL", "MOrders.DAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MOrders.BLL", "MOrders.BLL\MOrders.BLL.csproj", "{285FDD6D-4959-4295-A57B-A1A21FE9F81D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MOrders.Domain", "MOrders.Domain\MOrders.Domain.csproj", "{ACD1120A-E59E-479A-BED1-E9E996967359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MOrders.Domain", "MOrders.Domain\MOrders.Domain.csproj", "{ACD1120A-E59E-479A-BED1-E9E996967359}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5EAAE4F4-EE6B-456C-9579-CC95895C00A8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

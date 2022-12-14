@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 string connection = builder.Configuration.GetConnectionString("MOrdersDBContext");
-builder.Services.AddDbContext<MOrdersContext>(option => option.UseSqlServer(connection));
+builder.Services.AddDbContext<MOrdersContext>(option => option.UseNpgsql(connection));
 
 builder.Services.AddTransient<IOrderServices, OrderServices>();
 builder.Services.AddTransient<IOrderItemServices, OrderItemServices>();
@@ -25,7 +25,7 @@ builder.Services.AddTransient<IRepository<Order>, OrderRepository>();
 builder.Services.AddTransient<IDistinctRepository<DistinctValues>, DistinctValuesRepositoriy> ();
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
