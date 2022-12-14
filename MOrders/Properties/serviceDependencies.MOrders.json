@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "postgresql1": {
-      "ignored": "true",
-      "type": "postgresql",
-      "connectionId": "postgres",
-      "dynamicId": null
-    },
     "secrets1": {
       "secretStore": "AzureAppSettings",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/MOrdersvault",

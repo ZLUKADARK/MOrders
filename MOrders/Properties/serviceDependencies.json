@@ -1,10 +1,5 @@
 {
   "dependencies": {
-    "postgresql1": {
-      "type": "postgresql",
-      "connectionId": "postgres",
-      "dynamicId": null
-    },
     "secrets2": {
       "type": "secrets",
       "connectionId": "VaultUri",
