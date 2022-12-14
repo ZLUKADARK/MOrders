@@ -1,5 +1,4 @@
-﻿using MOrders.Domain.DataTransferObject.Order;
-using MOrders.Domain.DataTransferObject.OrderItem;
+﻿using MOrders.Domain.DataTransferObject.OrderItem;
 using MOrders.Domain.Models;
 
 namespace MOrders.BLL.Interfaces

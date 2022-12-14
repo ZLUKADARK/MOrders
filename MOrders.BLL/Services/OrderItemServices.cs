@@ -1,6 +1,5 @@
 ﻿using MOrders.BLL.Interfaces;
 using MOrders.DAL.Interfaces;
-using MOrders.Domain.DataTransferObject.Order;
 using MOrders.Domain.DataTransferObject.OrderItem;
 using MOrders.Domain.Entities;
 using MOrders.Domain.Models;

@@ -8,6 +8,7 @@ namespace MOrders.DAL.Data
         public MOrdersContext(DbContextOptions<MOrdersContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
         public DbSet<Provider> Provider { get; set; }
         public DbSet<OrderItem> OrderItem { get; set; }
