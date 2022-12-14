@@ -6,18 +6,18 @@
     <div class="col-md-12">
         <form id="filters" class="border-dark">
             <div class="row">
-                <div class="col-3">
+                <div class="col-md-3">
                     <label class="control-label">Поиск</label>
                     <input class="form-control" id="search" type="search" name="Search">
                 </div>
             </div>
             <br />
             <div class="row" id="dateBlock">
-                <div class="col-3">
+                <div class="col-md-3">
                     <label class="control-label">От</label>
                     <input class="form-control" id="datePast" type="datetime-local" name="DatePast" value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-ddTHH:mm")">
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <label class="control-label">До</label>
                     <input class="form-control" id="dateNow" type="datetime-local" name="DateNow" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")">
                 </div>
@@ -28,7 +28,7 @@
                         <label class="control-label">Номер заказа</label>
                         <select multiple name="Number" asp-items="ViewBag.SelectNumber" class="selectpicker form-control"></select>
                     </div>
-                    <div class="col-md-3 col-ex d-flex flex-column">
+                    <div class="col-md-3 col-ex d-flex flex-column"> заказа	Количеств
                         <label class="control-label">Поставщик</label>
                         <select multiple name="ProviderName" asp-items="ViewBag.SelectProviderName" class="selectpicker form-control"></select>
                     </div >
