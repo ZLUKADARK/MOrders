@@ -11,13 +11,10 @@ using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-/*var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
-builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
-*/
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-string connection = builder.Configuration.GetConnectionString("MOrdersDBContext");
+string connection = builder.Configuration["MOrdersDBContext"];
 builder.Services.AddDbContext<MOrdersContext>(option => option.UseNpgsql(connection));
 
 builder.Services.AddTransient<IOrderServices, OrderServices>();
