@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "secrets2": {
-      "ignored": "true",
-      "type": "secrets.keyVault"
-    }
-  }
-}
