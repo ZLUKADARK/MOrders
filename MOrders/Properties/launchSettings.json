@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "moirdersVaultUri": "https://mordersvault.vault.azure.net/",
         "AZURE_USERNAME": "ahmadcakaev@mail.ru",
-        "VaultUri": "https://mordersvault.vault.azure.net/"
+        "VaultUri": "https://resourcemorders.vault.azure.net/"
       }
     },
     "https": {
@@ -29,7 +29,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "moirdersVaultUri": "https://mordersvault.vault.azure.net/",
         "AZURE_USERNAME": "ahmadcakaev@mail.ru",
-        "VaultUri": "https://mordersvault.vault.azure.net/"
+        "VaultUri": "https://resourcemorders.vault.azure.net/"
       }
     },
     "IIS Express": {
@@ -39,7 +39,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "moirdersVaultUri": "https://mordersvault.vault.azure.net/",
         "AZURE_USERNAME": "ahmadcakaev@mail.ru",
-        "VaultUri": "https://mordersvault.vault.azure.net/"
+        "VaultUri": "https://resourcemorders.vault.azure.net/"
       }
     }
   }
